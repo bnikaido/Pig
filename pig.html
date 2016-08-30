@@ -1,0 +1,617 @@
+<!DOCTYPE html>
+<!-- HEADER -->
+<head>
+	<script src="pig.js"></script>
+	<link rel="stylesheet" type="text/css" href="pig.css">
+</head>
+<body>
+	<!-------- Visible Page ------->
+	<div>
+		<div class="header">
+			<h1>Big Pig</h1>
+		</div>
+		<div class="nav">
+			<button class="options" onclick="window.location='#instructions';">View Instructions</button>
+			<button class="options" onclick="window.location='#custom';">Game Settings</button>
+			<button class="options" onclick="window.location='#botInvasion';">Bot Settings</button>
+			<button class="options" onclick="window.location='#namePlayers';">Player Names</button>
+		</div>
+		
+		<div class="buttons" id="begin">
+			<button class="start" onclick="playGame()">Start Game!</button>
+		</div>
+		<div class="buttons" id="game">
+			<button type="button" class="game" onclick="rollButton(this)">Roll!</button>
+			<button type="button" class="game" onclick="holdButton(this)">Hold</button>		
+		</div>
+		<div class="board">
+			<!-- Speed is not viable because of setTimeout
+			<button type="button" class="speed" id="1x" onclick="changeSpeed(1)">1x</button>
+			<button type="button" class="speed" id="2x" onclick="changeSpeed(2)">2x</button> -->
+			<div class="playersA">
+				<div class="player" id="player0">
+					<!-- <img src="https://i2.wp.com/cdn2.iconfinder.com/static/2ae174f07522a6b8c7c997bf4b62a821/assets/img/default-avatar-user.png?ssl=1" height="90px"><br />	-->
+					<table>
+						<tr>
+							<th colspan="2">Player 1</th>
+						</tr>
+						<tr>
+							<th>Points:</th>
+							<td id="points"></td>
+						</tr>
+						<tr>
+							<th>Turn:</th>
+							<td id="turn"></td>
+						</tr>
+					</table>
+				</div>
+				<div class="player" id="player2">
+					<table>
+						<tr>
+							<th colspan="2">Player 3</th>
+						</tr>
+						<tr>
+							<th>Points:</th>
+							<td id="points"></td>
+						</tr>
+						<tr>
+							<th>Turn:</th>
+							<td id="turn"></td>
+						</tr>
+					</table>
+				</div>
+				<div class="player" id="player4">
+					<table>
+						<tr>
+							<th colspan="2">Player 5</th>
+						</tr>
+						<tr>
+							<th>Points:</th>
+							<td id="points"></td>
+						</tr>
+						<tr>
+							<th>Turn:</th>
+							<td id="turn"></td>
+						</tr>
+					</table>
+				</div>
+				<div class="player" id="player6">
+					<table>
+						<tr>
+							<th colspan="2">Player 7</th>
+						</tr>
+						<tr>
+							<th>Points:</th>
+							<td id="points"></td>
+						</tr>
+						<tr>
+							<th>Turn:</th>
+							<td id="turn"></td>
+						</tr>
+					</table>
+				</div>
+				<div class="player" id="player8">
+					<table>
+						<tr>
+							<th colspan="2">Player 9</th>
+						</tr>
+						<tr>
+							<th>Points:</th>
+							<td id="points"></td>
+						</tr>
+						<tr>
+							<th>Turn:</th>
+							<td id="turn"></td>
+						</tr>
+					</table>
+				</div>
+				<div class="player" id="player1">
+					<table>
+						<tr>
+							<th colspan="2">Player 2</th>
+						</tr>
+						<tr>
+							<th>Points:</th>
+							<td id="points"></td>
+						</tr>
+						<tr>
+							<th>Turn:</th>
+							<td id="turn"></td>
+						</tr>
+					</table>
+				</div>
+				<div class="player" id="player3">
+					<table>
+						<tr>
+							<th colspan="2">Player 4</th>
+						</tr>
+						<tr>
+							<th>Points:</th>
+							<td id="points"></td>
+						</tr>
+						<tr>
+							<th>Turn:</th>
+							<td id="turn"></td>
+						</tr>
+					</table>
+				</div>
+				<div class="player" id="player5">
+					<table>
+						<tr>
+							<th colspan="2">Player 6</th>
+						</tr>
+						<tr>
+							<th>Points:</th>
+							<td id="points"></td>
+						</tr>
+						<tr>
+							<th>Turn:</th>
+							<td id="turn"></td>
+						</tr>
+					</table>
+				</div>
+				<div class="player" id="player7">
+					<table>
+						<tr>
+							<th colspan="2">Player 8</th>
+						</tr>
+						<tr>
+							<th>Points:</th>
+							<td id="points"></td>
+						</tr>
+						<tr>
+							<th>Turn:</th>
+							<td id="turn"></td>
+						</tr>
+					</table>
+				</div>
+				<div class="player" id="player9">
+					<table>
+						<tr>
+							<th colspan="2">Player 10</th>
+						</tr>
+						<tr>
+							<th>Points:</th>
+							<td id="points"></td>
+						</tr>
+						<tr>
+							<th>Turn:</th>
+							<td id="turn"></td>
+						</tr>
+					</table>
+				</div>
+			</div>
+			
+			<div class="field">
+				<div class="log" id="textlog"></div>
+				
+				<div class="square">
+					<div class="die" id="d0"><img src="img/dice_1.png" height="100%"/></div>
+				</div>
+				<div class="square">
+					<div class="die" id="d1"><img src="img/dice_2.png" height="100%"/></div>
+				</div>
+				<div class="square">
+					<div class="die" id="d2"><img src="img/dice_3.png" height="100%"/></div>
+				</div>
+				<div class="square">
+					<div class="die" id="d3"><img src="img/dice_4.png" height="100%"/></div>
+				</div>
+				<div class="square">
+					<div class="die" id="d4"><img src="img/dice_5.png" height="100%"/></div>
+				</div>
+				<div class="square">
+					<div class="die" id="d5"><img src="img/dice_6.png" height="100%"/></div>
+				</div>
+				<div class="square">
+					<div class="die" id="d6"><img src="img/dice_5.png" height="100%"/></div>
+				</div>
+				<div class="square">
+					<div class="die" id="d7"><img src="img/dice_4.png" height="100%"/></div>
+				</div>
+				<div class="square">
+					<div class="die" id="d8"><img src="img/dice_3.png" height="100%"/></div>
+				</div>
+				<div class="square">
+					<div class="die" id="d9"><img src="img/dice_2.png" height="100%"/></div>
+				</div>
+				
+			</div>
+			<!-- Players 2nd Column
+			<div class="playersB">
+				<div class="player" id="player1">
+					<table>
+						<tr>
+							<th colspan="2">Player 2</th>
+						</tr>
+						<tr>
+							<th>Points:</th>
+							<td id="points"></td>
+						</tr>
+						<tr>
+							<th>Turn:</th>
+							<td id="turn"></td>
+						</tr>
+					</table>
+				</div>
+				<div class="player" id="player3">
+					<table>
+						<tr>
+							<th colspan="2">Player 4</th>
+						</tr>
+						<tr>
+							<th>Points:</th>
+							<td id="points"></td>
+						</tr>
+						<tr>
+							<th>Turn:</th>
+							<td id="turn"></td>
+						</tr>
+					</table>
+				</div>
+				<div class="player" id="player5">
+					<table>
+						<tr>
+							<th colspan="2">Player 6</th>
+						</tr>
+						<tr>
+							<th>Points:</th>
+							<td id="points"></td>
+						</tr>
+						<tr>
+							<th>Turn:</th>
+							<td id="turn"></td>
+						</tr>
+					</table>
+				</div>
+				<div class="player" id="player7">
+					<table>
+						<tr>
+							<th colspan="2">Player 8</th>
+						</tr>
+						<tr>
+							<th>Points:</th>
+							<td id="points"></td>
+						</tr>
+						<tr>
+							<th>Turn:</th>
+							<td id="turn"></td>
+						</tr>
+					</table>
+				</div>
+				<div class="player" id="player9">
+					<table>
+						<tr>
+							<th colspan="2">Player 10</th>
+						</tr>
+						<tr>
+							<th>Points:</th>
+							<td id="points"></td>
+						</tr>
+						<tr>
+							<th>Turn:</th>
+							<td id="turn"></td>
+						</tr>
+					</table>
+				</div>
+			</div>
+			-->
+			
+		</div>
+		<div class="footer">
+		</div>
+	</div>
+	
+	<!-------- Hidden Modals ------->
+	<div id="bigPig" class="event" >
+	</div>
+	
+	<div id="hog" class="event" >
+	</div>
+	
+	<div id="bigHog" class="event" >
+	</div>
+	
+	<div id="notify" class="event" >
+		<div id="notification"></div>
+	</div>
+	
+	<div id="instructions" class="instructions">
+			<table>
+				<tr><th colspan="2"><a class="close" href="#">X</a><h2>Instructions:</h2></th></tr>
+				<tr>
+					<th><p><h3>Setup</h3></th>
+					<th><h3>Play</h3></th>
+				</tr>
+				<tr>
+					<td class="rborder"><br /><b>Game Settings</b><br />
+						Click here for each of the following:
+						<ul>
+							<li>Set the winning goal<br />
+								The first player to reach the goal wins!<br />
+								<small>*Default goal is 100 for a traditional game.</small>
+							</li>
+							<li>Change the number of dice<br />
+								The more dice, the faster you will gain points. If any die rolls a '1', you're turn is automatically over!<br />
+								<small>*Default is 1 die</small>
+							</li>
+							<li>Change the number of Players<br />
+								Best played with two players. Up to 10 players may play (but there will be more downtime between turns)<br />
+								<small>*Default is 1 player. Must have at least 1 player to start the game.</small><br />
+								<small>**This does not include 'bots' or AI players.</small><br />
+							</li>
+							<li>Graphics<br />
+								<small>Coming Soon!</small>
+							</li>
+							<li>Sound<br />
+								<small>Coming Soon!</small>
+							</li>
+						</ul>
+						<br /><b>Bot Settings</b><br />
+						Bots will automate their own turns with AI.<br />
+						<ul>
+							<li>Number of bots<br />
+								They will be included in the maximum player count (10). At maximum count, a total of 9 bots may play.<br />
+								<small>*The default is 1 bot.</small><br />
+							</li>
+							<li>Difficulty Level<br />
+								<small>Coming Soon!</small><br />
+							</li>
+						</ul>
+						<br /><b>Player Names</b><br />
+						Allows you to customize the player names.<br />
+						<small>*This does not include bot names.</small><br />
+					</td>
+					<td class="lborder">
+						<br /><b>Goal</b><br />
+						Be the first player to reach the goal!<br />
+						<br /><b>Turn</b><br />
+						<ul><li>A player can only roll on their own turn.</li>
+						<li>The dice roll will determine how many points are awarded to the player.</li>
+						<li>The player can continue rolling until either a '1' is rolled or the player chooses to 'hold' the points earned.</li>
+						<li>If a '1' is rolled, all of the points accumulated over this turn are lost, and the player's turn to roll is over.<br />
+							<small>i.e. no points are earned this turn.</small></li>
+						<li>When the player chooses to 'hold', all the points accumulated are added to the player's total points. These points cannot be lost in the next round.<br />
+						<small>If the accumulated points and the total points reach the goal, the player will still need to hold the points before it is considered a win.</small></li></ul><br />
+						<br /><b>Multiple Dice</b><br />
+						<ul><li>Double points when doubles are rolled!</li>
+						<li>If one '1' is rolled, the turn ends and the player receives no additional points.<br />
+						<small>i.e. 0 points are earned for this turn</small></li>
+						<li>If two or more 1's are rolled, the player will earn a bonus 25 points and the turn will continue!</li></ul><br />
+					</p>
+					</td>
+				</tr>
+				<tr><th colspan="2"><h2>Enjoy The Game!</h2></th></tr>
+			</table>
+		</div>
+	
+	<div id="custom" class="gameSettings" >
+		<form name="gameSettings" onsubmit="return checkSetUp()" method"post">
+			<a class="close" href="#">X</a>
+			<h4>Game Settings</h4>
+			<table>
+				<tr class="a">
+					<th>Winning Goal:</th>
+					<td>
+						<input type="number" name="goal" value="100" min="1" max="9999" />
+					</td>
+				</tr>
+				<tr class="b">
+					<th>Number of Dice:</th>
+					<td>
+						<input type='number' name='dice' value="1" min="1" max="10" />
+					</td>
+				</tr>
+				<tr class="a">
+					<th>Number of Players:</th>
+					<td>
+						<input type="number" name="players" value="1" min="1" max="10" required />
+					</td>
+				</tr>
+				<!--
+				<tr class="b">
+					<th>Are there any bots?
+						<br /><small>(Bots are non-controlled AI Players)</small></th>
+					<td>
+						<input type="radio" name="bots" value="true" />Yes!
+						<br />
+						<input type="radio" name="bots" value="false" checked />No</td>
+				</tr>
+				-->
+				<tr class="a">
+					<td class="center" colspan="2">
+						<input type="submit" value="Submit" />
+					</td>
+				</tr>
+			</table>
+		</form>
+	</div>
+	
+	<div id="botInvasion" class="gameSettings" >
+		<form name="botSettings" onsubmit="return checkSetUp()" method="post">
+			<a class="close" href="#">X</a>
+			<h4>Bot Settings</h4>
+			<table>
+				<tr class="b">
+					<th>Number of Bots:
+						<br /><small>(Bots are non-controlled AI Players)</small></th>
+					<td>
+						<input type="number" name="botNum" value="1" min="0" max="9" />
+					</td>
+				</tr>
+				<tr class="a">
+					<td class="center" colspan="2">
+						<input type="submit" value="Submit" />
+					</td>
+				</tr>
+			</table>
+		</form>
+	</div>
+
+	<div id="namePlayers" class="gameSettings" >
+		<form name="playerSettings" onsubmit="return captureSetUp()" method="post">
+			<a class="close" href="#">X</a>
+			<h4>Enter Player Names</h4>
+			<table>
+				<tr class="a" id="0" placeholder="Player 1">
+					<th>&nbsp;&nbsp;&nbsp;Player 1:&nbsp;&nbsp;&nbsp;</th>
+					<td>
+						<input type="text" name="p0" />
+					</td>
+				</tr>
+				<tr class="hiddenB" id="1" placeholder="Player 2">
+					<th>&nbsp;&nbsp;&nbsp;Player 2:&nbsp;&nbsp;&nbsp;</th>
+					<td>
+						<input type="text" name="p1" />
+					</td>
+				</tr>
+				<tr class="hiddenA" id="2" placeholder="Player 3">
+					<th>&nbsp;&nbsp;&nbsp;Player 3:&nbsp;&nbsp;&nbsp;</th>
+					<td>
+						<input type="text" name="p2" />
+					</td>
+				</tr>
+				<tr class="hiddenB" id="3" placeholder="Player 4">
+					<th>&nbsp;&nbsp;&nbsp;Player 4:&nbsp;&nbsp;&nbsp;</th>
+					<td>
+						<input type="text" name="p3" />
+					</td>
+				</tr>
+				<tr class="hiddenA" id="4" placeholder="Player 5">
+					<th>&nbsp;&nbsp;&nbsp;Player 5:&nbsp;&nbsp;&nbsp;</th>
+					<td>
+						<input type="text" name="p4" />
+					</td>
+				</tr>
+				<tr class="hiddenB" id="5" placeholder="Player 6">
+					<th>&nbsp;&nbsp;&nbsp;Player 6:&nbsp;&nbsp;&nbsp;</th>
+					<td>
+						<input type="text" name="p5" />
+					</td>
+				</tr>
+				<tr class="hiddenA" id="6" placeholder="Player 7">
+					<th>&nbsp;&nbsp;&nbsp;Player 7:&nbsp;&nbsp;&nbsp;</th>
+					<td>
+						<input type="text" name="p6" />
+					</td>
+				</tr>
+				<tr class="hiddenB" id="7" placeholder="Player 8">
+					<th>&nbsp;&nbsp;&nbsp;Player 8:&nbsp;&nbsp;&nbsp;</th>
+					<td>
+						<input type="text" name="p7" />
+					</td>
+				</tr>
+				<tr class="hiddenA" id="8" placeholder="Player 9">
+					<th>&nbsp;&nbsp;&nbsp;Player 9:&nbsp;&nbsp;&nbsp;</th>
+					<td>
+						<input type="text" name="p8" />
+					</td>
+				</tr>
+				<tr class="hiddenB" id="9" placeholder="Player 10">
+					<th>&nbsp;&nbsp;&nbsp;Player 10:</th>
+					<td>
+						<input type="text" name="p9" />
+					</td>
+				</tr>
+				<tr class="a">
+					<td class="center" colspan="2">
+						<input type="submit" value="Submit" />
+					</td>
+				</tr>
+			</table>
+		</form>
+	</div>
+</body>
+<footer>
+	<!-------- Functions ------->
+	<script type="text/javascript">
+		popIsUp = false;
+		function toggle_visibility(id) {
+			var e = document.getElementById(id);
+			//console.log(e.style.display);
+			if(e.style.display == 'block')
+				e.style.display = 'none';
+			else
+				e.style.display = 'block';
+		}
+		toggle_visibility("begin");
+		
+		function changeSpeed( multiplier ) {
+			toggle_visibility("1x");
+			toggle_visibility("2x");
+			speed = multiplier;
+		}
+		
+		function playGame() {
+			logbox = document.getElementById("textlog");
+			captureSetUp();
+			//console.log(logbox);
+			/* window.location="#custom";	*/
+			/*if( theGame.start() > 0 ) {
+				toggle_visibility("begin");
+				toggle_visibility("game");
+			}*/
+		}
+
+		// No longer forced settings (Default values will fill in empty spaces)
+		function checkSetUp() {
+			for( var i = 1; i < document.forms["gameSettings"]["players"].value; i++ ) {
+						document.getElementById(String(i)).style.display = "table-row";
+					}
+			window.location="#";
+			return false;
+			/*
+			if( document.forms["gameSettings"]["bots"].value === "true" && !hasValue(document.forms["botSettings"]["botNum"].value) ) {
+					window.location="#botInvasion";
+				}
+			else {
+				for( var i = 1; i < document.forms["gameSettings"]["players"].value; i++ ) {
+					//document.forms["playerSettings"][String(i)].type = "text";
+					document.getElementById(String(i)).style.display = "table-row";
+				}
+				window.location="#namePlayers";
+			}
+			*/
+		}
+		
+		function captureSetUp() {
+			var set = document.forms["gameSettings"];
+			var botSet = document.forms["botSettings"];
+			var playSet = document.forms["playerSettings"];
+			speed = 1;
+			theGame = new Game(set.goal.value, set.dice.value, set.players.value, botSet.botNum.value);
+			for( var i = 0; i < set.players.value; i++) {
+				theGame.playerNames.push(playSet["p" + String(i)].value);
+			}
+			if( theGame.start() == 0 ) {
+				toggle_visibility("begin");
+				toggle_visibility("game");
+				//toggle_visibility("2x");
+			}
+			window.location="#game";
+			return false;
+		}
+		
+		function backTo( target ) {
+			setTimeout( function() {window.location=target;}, 900);
+			setTimeout( function() {popIsUp = false;}, 900);
+			return;
+		}
+		
+		function popNotify( amount ) {
+			var box = document.getElementById("notification");
+			return function() {
+				if( !popIsUp ) {
+					popIsUp = true;
+					console.log(box);
+					box.innerHTML = String(amount);
+					window.location = "#notify";
+					backTo("#game");
+				}
+				else {
+					setTimeout(popNotify( amount ), 100);
+				}
+			};
+		}
+	</script>
+</footer>
